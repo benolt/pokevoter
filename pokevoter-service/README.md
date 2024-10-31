@@ -1,13 +1,7 @@
 # Pokevoter service
 
-## Install
 
-Requires Node.js, Docker or PostgreSQL.
-
-```sh
-nvm use
-npm ci
-```
+Requires Docker or Node.js and PostgreSQL.
 
 Create `.env` file and set up the variables:
 
@@ -30,6 +24,15 @@ docker-compose down
 ```
 
 ## Run the service locally
+
+## Install
+
+Install the dependencies:
+
+```sh
+nvm use
+npm ci
+```
 
 Install PostgreSQL and configure connection in the `.env` file (see .env.example for possible settings).
 

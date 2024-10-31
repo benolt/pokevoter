@@ -4,12 +4,11 @@ on:
   pull_request:
     branches: [ main ]
     paths:
-      - 'pokevoter-service/**'
-      - 'pokevoter-frontend/**'
+      - pokevoter-service/**
+      - pokevoter-frontend/**
 
 jobs:
   build-service:
-    if: contains(github.event.pull_request.changed_files, 'pokevoter-service/')
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
@@ -20,13 +19,10 @@ jobs:
       with:
         node-version: 20
         check-latest: false
-        cache: "npm"
-        cache-dependency-path: package-lock.json
 
     - name: Install dependencies
       run: |
         cd pokevoter-service
-        npm cache verify
         npm ci
 
     - name: Build project
@@ -35,7 +31,6 @@ jobs:
         npm run build
 
   build-frontend:
-    if: contains(github.event.pull_request.changed_files, 'pokevoter-frontend/')
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
@@ -46,13 +41,10 @@ jobs:
       with:
         node-version: 20
         check-latest: false
-        cache: "npm"
-        cache-dependency-path: package-lock.json
 
     - name: Install dependencies
       run: |
         cd pokevoter-frontend
-        npm cache verify
         npm ci
 
     - name: Build project
