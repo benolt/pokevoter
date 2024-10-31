@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  pgdb:
+    container_name: pokevoter-db
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-pgadmin}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-password}
+      - POSTGRES_DB=${POSTGRES_DB:-pokevoter}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./scripts/init-pokemons.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - '5437:5432'
+
+  node:
+    container_name: pokevoter-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - POSTGRES_HOST=pgdb
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=${POSTGRES_USER:-pgadmin}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-password}
+      - POSTGRES_DB=${POSTGRES_DB:-pokevoter}
+    depends_on:
+      - pgdb
+    ports:
+      - ${API_PORT:-9083}:${API_PORT:-9083}
+
+volumes:
+  db-data:

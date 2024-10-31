@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2016"],
+    "module": "commonjs",
+    "target": "es2016",
+
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "dist/scripts",
+    "rootDir": "scripts"
+  },
+  "include": ["scripts/**/*"]
+}
+  

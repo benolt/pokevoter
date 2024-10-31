@@ -1,0 +1,39 @@
+{
+  "name": "pokevoter-service",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npx tsc -p tsconfig.service.json",
+    "dev": "npx nodemon src/index.ts",
+    "fetch-db": "(cd scripts && npx ts-node fetch-pokemons.ts)",
+    "start": "node dist/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@eslint/js": "^9.12.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.7.6",
+    "@types/node-fetch": "^2.6.11",
+    "@types/pg": "^8.11.10",
+    "eslint": "^9.12.0",
+    "eslint-config-prettier": "^9.1.0",
+    "globals": "^15.11.0",
+    "nodemon": "^3.1.7",
+    "prettier": "3.3.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.9.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "helmet": "^8.0.0",
+    "pg": "^8.13.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.4"
+  }
+}
