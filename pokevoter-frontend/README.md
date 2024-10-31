@@ -5,7 +5,7 @@
 Requires Node.js.
 
 ```sh
-npm ci
+npm install
 ```
 
 Create `.env` file and configure the connection to the service:
